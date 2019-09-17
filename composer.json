@@ -1,0 +1,21 @@
+{
+    "name": "buibr/kambi-mrgreen-sdk",
+    "description": "MrGreen Livescore Odds provider API by Kambi Offering API",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "buibr",
+            "email": "burhan@wflux.pro"
+        }
+    ],
+    "require": {
+        "php": "^7.3"
+    },
+    "require-dev": {},
+    "autoload": {
+        "psr-4": {
+            "buibr\\KambiMrGreen\\": ""
+        }
+    }
+}
