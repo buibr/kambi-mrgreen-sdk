@@ -80,10 +80,7 @@ class Data {
             throw new InvalidConfigException('Invalid configuration API or Path', 101);
         endif;
 
-        $headers = [
-            'Accept' => 'application/json',
-            'Author' => 'buibr',
-        ];
+        $headers = ['Accept' => 'application/json',];
 
         $query = [];
         if(!empty($this->query)) {
@@ -93,8 +90,8 @@ class Data {
         try
         {
 
-            print "\n\nENDPOINT: {$this->api}{$this->path}\n\n";
-            print_r(['query'=>$query,'headers'=>$headers]);
+            // print "\n\nENDPOINT: {$this->api}{$this->path}\n\n";
+            // print_r(['query'=>$query,'headers'=>$headers]);
             $this->result = $this->client->request('GET', $this->api . $this->path,[
                 'query' => $query,
                 'headers' => $headers
@@ -114,9 +111,9 @@ class Data {
                     throw new InvalidResponseException( strip_tags($e->getMessage()), 102);
                 endif;
 
-              } else {
+            } else {
                 throw new InvalidResponseException( $e->getMessage(), 102);
-              }
+            }
 
         }
 
