@@ -3,7 +3,7 @@
 
 namespace buibr\KambiMrGreen\Groups;
 
-class Politics extends \buibr\KambiMrGreen\Group {
+class PoliticsGroup extends \buibr\KambiMrGreen\Base\Group {
 
     /**
      * 

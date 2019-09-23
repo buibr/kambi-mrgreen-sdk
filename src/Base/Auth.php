@@ -1,6 +1,6 @@
 <?php 
 
-namespace buibr\KambiMrGreen;
+namespace buibr\KambiMrGreen\Base;
 
 use buibr\KambiMrGreen\Exceptions\InvalidConfigException;
 

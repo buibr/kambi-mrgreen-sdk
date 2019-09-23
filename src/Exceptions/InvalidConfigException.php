@@ -4,5 +4,5 @@
 namespace buibr\KambiMrGreen\Exceptions;
 
 
-class InvalidConfigException extends \ErrorException {
+class InvalidConfigException extends KambiMrGrenException {
 }

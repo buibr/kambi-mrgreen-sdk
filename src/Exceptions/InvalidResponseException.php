@@ -4,5 +4,5 @@
 namespace buibr\KambiMrGreen\Exceptions;
 
 
-class InvalidResponseException extends \ErrorException {
+class InvalidResponseException extends KambiMrGrenException {
 }

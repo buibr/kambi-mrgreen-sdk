@@ -3,7 +3,7 @@
 
 namespace buibr\KambiMrGreen\Groups;
 
-class NonSport extends \buibr\KambiMrGreen\Group {
+class NonSportGroup extends \buibr\KambiMrGreen\Base\Group {
 
     /**
      * 

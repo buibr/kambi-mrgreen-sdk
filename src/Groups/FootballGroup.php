@@ -3,7 +3,7 @@
 
 namespace buibr\KambiMrGreen\Groups;
 
-class Football extends \buibr\KambiMrGreen\Group {
+class FootballGroup extends \buibr\KambiMrGreen\Base\Group {
 
     /**
      * 

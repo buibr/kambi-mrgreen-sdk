@@ -3,7 +3,7 @@
 
 namespace buibr\KambiMrGreen\Groups;
 
-class HorseRacing extends \buibr\KambiMrGreen\Group {
+class HorseRacingGroup extends \buibr\KambiMrGreen\Base\Group {
 
     /**
      * 

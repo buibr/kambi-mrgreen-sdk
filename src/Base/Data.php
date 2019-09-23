@@ -1,9 +1,9 @@
 <?php 
 
-namespace buibr\KambiMrGreen;
+namespace buibr\KambiMrGreen\Base;
 
 use GuzzleHttp\Client;
-use buibr\KambiMrGreen\Auth;
+use buibr\KambiMrGreen\Base\Auth;
 use buibr\KambiMrGreen\Exceptions\InvalidConfigException;
 use buibr\KambiMrGreen\Exceptions\InvalidResponseException;
 
@@ -18,6 +18,11 @@ class Data {
      *  Path of the sector 
      */
     protected $path;
+
+    /**
+     * Query of the request.
+     */
+    protected $query = [];
 
     /**
      * Guzzle client
@@ -62,31 +67,52 @@ class Data {
     /**
      * 
      */
+    public function setQuery( array $query){
+        return $this->query = array_merge($this->query, $query);
+    }
+
+    /**
+     * 
+     */
     public function getData(){
 
         if(empty($this->api) || empty($this->path)):
             throw new InvalidConfigException('Invalid configuration API or Path', 101);
         endif;
 
+        $headers = [
+            'Accept' => 'application/json',
+            'Author' => 'buibr',
+        ];
+
+        $query = [];
+        if(!empty($this->query)) {
+            $query = $this->query;
+        }
+
         try
         {
+
+            print "\n\nENDPOINT: {$this->api}{$this->path}\n\n";
+            print_r(['query'=>$query,'headers'=>$headers]);
             $this->result = $this->client->request('GET', $this->api . $this->path,[
-                'headers' => [
-                    'Accept' => 'application/json',
-                    'Author' => 'buibr',
-                ]
+                'query' => $query,
+                'headers' => $headers
             ]);
 
-            
         }
         catch( \Exception $e){
 
             if ($e->hasResponse()) {
 
-                $exception = (string) $e->getResponse()->getBody();
+                $exception = (string)$e->getResponse()->getBody();
                 $exception = json_decode($exception);
 
-                throw new InvalidResponseException( $exception->error->message, 102);
+                if(isset($exception->error) && isset($exception->error->message)):
+                    throw new InvalidResponseException( $exception->error->message, 102);
+                else:
+                    throw new InvalidResponseException( strip_tags($e->getMessage()), 102);
+                endif;
 
               } else {
                 throw new InvalidResponseException( $e->getMessage(), 102);

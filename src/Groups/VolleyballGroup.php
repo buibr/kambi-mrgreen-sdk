@@ -3,7 +3,7 @@
 
 namespace buibr\KambiMrGreen\Groups;
 
-class Volleyball extends \buibr\KambiMrGreen\Group {
+class VolleyballGroup extends \buibr\KambiMrGreen\Base\Group {
 
     /**
      * 
