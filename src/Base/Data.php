@@ -94,16 +94,14 @@ class Data {
             throw new InvalidConfigException('Invalid configuration API or Path', 101);
         endif;
 
-        $headers = ['Accept' => 'application/json',];
-
         try
         {
 
             // print "\n\nENDPOINT: {$this->api}{$this->path}\n\n";
             // print_r(['query'=>$query,'headers'=>$headers]);
             $this->result = $this->client->request('GET', $this->api . $this->path,[
-                'query' => $query,
-                'headers' => $headers
+                'query' => $this->getQuery(),
+                'headers' => $this->getHeaders(),
             ]);
 
         }
@@ -156,9 +154,6 @@ class Data {
      * 
      */
     public function getEndpoint() {
-        return $this->client->request('GET', $this->api . $this->path,[
-            'query' => $this->getQuery(),
-            'headers' => $this->getHeaders(),
-        ]);
+        return "{$this->api}{$this->path}" . http_build_query($this->getQuery());
     }
 }
