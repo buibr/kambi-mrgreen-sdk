@@ -34,6 +34,13 @@ class Data {
      */
     protected $result;
 
+    /**
+     * 
+     */
+    protected $headers = [
+        'Accept' => 'application/json',
+    ];
+
     public function __construct(Auth $api = null, string $path = null)
     {
 
@@ -67,6 +74,13 @@ class Data {
     /**
      * 
      */
+    public function setHeader( array $array ){
+        $this->headers = array_merge($this->headers, $array);
+    }
+
+    /**
+     * 
+     */
     public function setQuery( array $query){
         return $this->query = array_merge($this->query, $query);
     }
@@ -81,11 +95,6 @@ class Data {
         endif;
 
         $headers = ['Accept' => 'application/json',];
-
-        $query = [];
-        if(!empty($this->query)) {
-            $query = $this->query;
-        }
 
         try
         {
@@ -125,4 +134,31 @@ class Data {
 
     }
 
+    /**
+     * 
+     */
+    public function getQuery() {
+        $query = [];
+        if(!empty($this->query)) {
+            $query = $this->query;
+        }
+        return $query;
+    }
+
+    /**
+     * 
+     */
+    public function getHeaders() {
+        return $this->headers;
+    }
+
+    /**
+     * 
+     */
+    public function getEndpoint() {
+        return $this->client->request('GET', $this->api . $this->path,[
+            'query' => $this->getQuery(),
+            'headers' => $this->getHeaders(),
+        ]);
+    }
 }

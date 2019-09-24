@@ -24,11 +24,6 @@ class FootballList extends \buibr\KambiMrGreen\Base\ListView {
 
             $this->data[] = new FootballOdds($obj);
 
-            print('<pre>');
-            print_r($this->data);
-            print('</pre>');
-            die;
-
         }
 
         return $this->data;
