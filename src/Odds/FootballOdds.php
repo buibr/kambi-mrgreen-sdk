@@ -26,7 +26,7 @@ class FootballOdds {
     {
         $this->event    = new EventModel($data->event);
 
-        if(isset($data->betOffers)):
+        if(isset($data->betOffers) && !empty($data->betOffers)):
             foreach($data->betOffers as $bet) {
                 $this->betOffer[] = new BetOfferModel( $bet );
             }
