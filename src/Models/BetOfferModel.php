@@ -97,13 +97,13 @@ class BetOfferModel {
         
         if(isset($data->outcomes)){
             foreach($data->outcomes as $bet) {
-                if(\trim($bet->label) === '1'){
+                if(\trim($bet->label) === '1' && isset($bet->odds) ){
                     $this->one = \number_format($bet->odds  / 1000, 2);
                 }
-                if(\trim(\strtolower($bet->label)) === 'x'){
+                if(\trim(\strtolower($bet->label)) === 'x' && isset($bet->odds)){
                     $this->cross = \number_format($bet->odds  / 1000, 2);
                 }
-                if(\trim($bet->label) === '2'){
+                if(\trim($bet->label) === '2' && isset($bet->odds) ){
                     $this->two = \number_format($bet->odds  / 1000, 2);
                 }
             }
