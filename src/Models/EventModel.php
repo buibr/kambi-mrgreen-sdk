@@ -2,6 +2,8 @@
 
 namespace buibr\KambiMrGreen\Models;
 
+use DateTime;
+
 /**
  * 
  * [event] => stdClass Object
@@ -103,5 +105,23 @@ class EventModel {
                 $this->competition = $data->path[2]->englishName;
             
         }
+    }
+
+    public function parseDate( string $format = null ){
+
+        try {
+            $date = new DateTime($this->start);
+
+            if(!empty($format))
+                return $date->format($format);
+            else
+                return $date;
+        }
+        catch(\Error $e) {
+        }
+        catch(\Exception $e) {
+        }
+
+        return null;
     }
 }
