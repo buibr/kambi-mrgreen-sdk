@@ -12,9 +12,12 @@ use buibr\KambiMrGreen\Exceptions\KambiMrGrenException;
 
 try {
 
-    $api = new FootballList( new Auth );
+    $api = new Auth;
+    $api->server = "e1-api.aws.kambicdn.com";
 
-    $data = $api->object();
+    $model = new FootballList( $api );
+
+    $data = $model->object();
 
     print_r( "\n" );
     print_r( $data );
