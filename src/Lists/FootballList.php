@@ -22,12 +22,8 @@ class FootballList extends \buibr\KambiMrGreen\Base\ListView {
         $this->data = [];
         foreach ( $this->eventData as $obj) {
 
-            if($obj->event->name !=='Roma - Atalanta'){
-                continue;
-            }
-
             $this->data[] = new FootballOdds($obj);
-            
+
         }
 
         return $this->data;
